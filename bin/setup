@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+set -vx
+
+bundle install
+
+# Do any other automated setup that you need to do here
+filename=".env"
+if [ ! -f $filename ]; then
+  touch $filename
+  echo "SHIPROCKET_API_USERNAME=" >>$filename
+  echo "SHIPROCKET_API_PASSWORD=" >>$filename
+fi
+
+filename=".pryrc"
+if [ ! -f $filename ]; then
+  touch $filename
+  echo "
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+  " >>$filename
+fi
