@@ -20,6 +20,14 @@ module ShiprocketAPI
         self.session = nil
         self.connection.bearer_token = nil
       end
+
+      def set_resource(resource)
+        ori_prefix = self.prefix
+        self.prefix = self.prefix.split("/")[0..-2].append(resource).join("/")        
+        result = yield
+        self.prefix = ori_prefix
+        result
+      end
     end
 
     def initialize(attributes = {}, persisted = false)

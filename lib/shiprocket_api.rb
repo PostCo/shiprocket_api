@@ -15,4 +15,5 @@ module ShiprocketAPI
   require 'shiprocket_api/resources/pickup_location'
   require 'shiprocket_api/resources/channel'
   require 'shiprocket_api/resources/courier_serviceability'
+  require 'shiprocket_api/resources/tracking'
 end

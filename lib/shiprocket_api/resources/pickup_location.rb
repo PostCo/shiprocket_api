@@ -24,16 +24,15 @@ module ShiprocketAPI
     }
 
     class << self
-      def set_prefix_to_list
-        ori_prefix = self.prefix
-        self.prefix = self.prefix.split("/")[0..-2].append("pickup").join("/")        
-        result = yield
-        self.prefix = ori_prefix
-        result
+
+      def set_prefix_to_list_all_locations
+        set_resource('pickup') do
+          yield
+        end
       end
 
       def find_every(options)
-        set_prefix_to_list do
+        set_prefix_to_list_all_locations do
           prefix_options, query_options = split_options(options[:params])
           path = collection_path(prefix_options, query_options)
           instantiate_collection((format.decode(connection.get(path, headers).body) || []), query_options, prefix_options)
