@@ -6,6 +6,7 @@ module ShiprocketAPI
 
   require 'shiprocket_api/configuration'
   require 'shiprocket_api/connection'
+  require 'shiprocket_api/errors'
 
   require 'shiprocket_api/resources/base'
   require 'shiprocket_api/resources/session'
@@ -16,4 +17,5 @@ module ShiprocketAPI
   require 'shiprocket_api/resources/channel'
   require 'shiprocket_api/resources/courier_serviceability'
   require 'shiprocket_api/resources/tracking'
+
 end

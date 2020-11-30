@@ -30,5 +30,14 @@ module ShiprocketAPI
     rescue OpenSSL::SSL::SSLError => e
       raise ActiveResource::SSLError.new(e.message)
     end
+
+    # Handles response and error codes from the remote service.
+    def handle_response(response)
+      if response.code.to_i == 200 && JSON.parse(response.body).keys.include?("message")
+        raise CreationError.new(response)
+      else
+        super
+      end
+    end
   end
 end

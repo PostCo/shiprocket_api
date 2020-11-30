@@ -49,7 +49,5 @@ module ShiprocketAPI
       ewaybill_no: "",
       customer_gstin: ""
     }
-
-
   end
 end

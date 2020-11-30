@@ -8,6 +8,7 @@ loader.inflector.inflect(
 loader.push_dir("./lib")
 loader.collapse("./lib/shiprocket_api/resources")
 loader.ignore("#{__dir__}/config.rb")
+loader.ignore("./lib/shiprocket_api/errors.rb")
 loader.enable_reloading
 # loader.log!
 loader.setup

@@ -21,6 +21,14 @@ module ShiprocketAPI
         self.connection.bearer_token = nil
       end
 
+      def with_temp_session(email:, password:, &block)
+        raise ArgumentError, "A block must be given" unless block
+
+        create_session(email: email, password: password)
+        yield
+        clear_session
+      end
+
       def set_resource(resource)
         ori_prefix = self.prefix
         self.prefix = self.prefix.split("/")[0..-2].append(resource).join("/")        
