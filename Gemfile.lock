@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shiprocket_api (0.2.0)
+    shiprocket_api (0.3.0)
       activeresource (~> 5.0)
       http
 

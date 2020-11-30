@@ -33,7 +33,8 @@ module ShiprocketAPI
 
     # Handles response and error codes from the remote service.
     def handle_response(response)
-      if response.code.to_i == 200 && JSON.parse(response.body).keys.include?("message")
+      if response.code.to_i == 200 &&
+        JSON.parse(response.body).dig("message") || JSON.parse(response.body).dig("payload", "error_message")
         raise CreationError.new(response)
       else
         super
