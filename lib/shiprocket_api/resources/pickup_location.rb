@@ -26,7 +26,7 @@ module ShiprocketAPI
     class << self
 
       def set_prefix_to_list_all_locations
-        set_resource('pickup') do
+        set_prefix("#{Base.prefix}/settings/company/pickup") do
           yield
         end
       end
@@ -45,6 +45,10 @@ module ShiprocketAPI
       end
     end
     
-    
+    def id_from_response(response)
+      JSON.parse(response.body).dig("address", "id")
+    rescue JSON::ParserError
+      nil
+    end
   end
 end

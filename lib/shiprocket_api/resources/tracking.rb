@@ -6,7 +6,7 @@ module ShiprocketAPI
     class << self
 
       def find_by_shipment_id(id)
-        set_resource('shipment') do
+        set_prefix("#{Base.prefix}/courier/track/shipment") do
           find(id)
         end
       end

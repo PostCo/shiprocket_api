@@ -29,9 +29,9 @@ module ShiprocketAPI
         clear_session
       end
 
-      def set_resource(resource)
+      def set_prefix(prefix)
         ori_prefix = self.prefix
-        self.prefix = self.prefix.split("/")[0..-2].append(resource).join("/")        
+        self.prefix = prefix
         result = yield
         self.prefix = ori_prefix
         result

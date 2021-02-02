@@ -17,5 +17,8 @@ module ShiprocketAPI
   require 'shiprocket_api/resources/channel'
   require 'shiprocket_api/resources/courier_serviceability'
   require 'shiprocket_api/resources/tracking'
-
+  require 'shiprocket_api/resources/label'
+  require 'shiprocket_api/resources/pickup'
+  require 'shiprocket_api/resources/return_order/awb'
+  require 'shiprocket_api/resources/return_order'
 end
