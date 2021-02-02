@@ -65,19 +65,28 @@ module ShiprocketAPI
     end
 
     def generate_awb(courier_id:)
-      self.awb = Awb.create(
+      self.awb = Awb.new(
         shipment_id: shipment_id,
         courier_id: courier_id,
         is_return: 1
       )
+      self.awb.save
+    end
+
+    def generate_label
+      return false unless respond_to?(:shipment_id) && shipment_id != 0
+
+      self.label = ::ShiprocketAPI::Label.new(shipment_id: [shipment_id])
+      self.label.save
     end
 
     def create_pickup(courier_id:)
-      self.pickup = Pickup.create(
+      self.pickup = ::ShiprocketAPI::Pickup.new(
         shipment_id: shipment_id,
         courier_id: courier_id,
         is_return: 1
       )
+      self.pickup.save
     end
   end
 end
