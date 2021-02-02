@@ -42,6 +42,28 @@ module ShiprocketAPI
       weight: ""
     }
 
+    class << self
+
+      def set_prefix_to_list_all
+        set_prefix("#{Base.prefix}/orders/processing/return") do
+          yield
+        end
+      end
+
+      def find_every(options)
+        set_prefix_to_list_all do
+          prefix_options, query_options = split_options(options[:params])
+          path = collection_path(prefix_options, query_options)
+          instantiate_collection((format.decode(connection.get(path, headers).body)["data"] || []), query_options, prefix_options)
+        rescue ActiveResource::ResourceNotFound
+          # Swallowing ResourceNotFound exceptions and return nil - as per
+          # ActiveRecord.
+          set_prefix_to_add
+          nil
+        end
+      end
+    end
+
     def generate_awb(courier_id:)
       self.awb = Awb.create(
         shipment_id: shipment_id,
