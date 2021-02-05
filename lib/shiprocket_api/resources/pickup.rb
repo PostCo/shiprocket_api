@@ -4,9 +4,7 @@ module ShiprocketAPI
     self.element_name= ""
 
     DEFAULT_ATTRS = {
-      shipment_id: 0,
-      courier_id: 0,
-      is_return: 1
+      shipment_id: [0]
     }
   end
 end
