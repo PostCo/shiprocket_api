@@ -5,6 +5,8 @@ module ShiprocketAPI
     self.prefix += '/orders/create/return'
     self.element_name = ''
 
+    has_many :order_items, class_name: 'ShiprocketAPI::OrderItem'
+
     DEFAULT_ATTRS = {
       order_id: '',
       order_date: '',
