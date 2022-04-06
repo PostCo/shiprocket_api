@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    shiprocket_api (0.5.1)
-      activeresource (~> 5.0)
+    shiprocket_api (0.5.2)
+      activeresource (>= 4.1.0)
       http
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.3.2)
-      activesupport (= 6.1.3.2)
+    activemodel (6.1.5)
+      activesupport (= 6.1.5)
     activemodel-serializers-xml (1.0.2)
       activemodel (> 5.x)
       activesupport (> 5.x)
@@ -18,23 +18,23 @@ GEM
       activemodel (>= 5.0, < 7)
       activemodel-serializers-xml (~> 1.0)
       activesupport (>= 5.0, < 7)
-    activesupport (6.1.3.2)
+    activesupport (6.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     builder (3.2.4)
     byebug (11.1.3)
     coderay (1.1.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.10)
     diff-lcs (1.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
-    ffi (1.13.1)
+    ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -58,19 +58,19 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
-    http-cookie (1.0.3)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     http-parser (1.2.3)
       ffi-compiler (>= 1.0, < 2.0)
-    i18n (1.8.10)
+    i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    listen (3.2.1)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lumberjack (1.2.4)
     method_source (1.0.0)
-    minitest (5.14.4)
+    minitest (5.15.0)
     nenv (0.3.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -83,7 +83,7 @@ GEM
       pry (~> 0.13.0)
     public_suffix (4.0.6)
     rake (12.3.3)
-    rb-fsevent (0.10.4)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rspec (3.9.0)
@@ -105,8 +105,8 @@ GEM
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7)
-    zeitwerk (2.4.2)
+    unf_ext (0.0.8.1)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   ruby
@@ -121,4 +121,4 @@ DEPENDENCIES
   shiprocket_api!
 
 BUNDLED WITH
-   2.1.4
+   2.3.8
