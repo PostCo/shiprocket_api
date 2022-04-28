@@ -7,6 +7,8 @@ module ShiprocketAPI
 
     has_many :order_items, class_name: 'ShiprocketAPI::OrderItem'
 
+    self.collection_parser = ReturnOrderCollection
+
     DEFAULT_ATTRS = {
       order_id: '',
       order_date: '',
@@ -52,15 +54,7 @@ module ShiprocketAPI
 
       def find_every(options)
         set_prefix_to_list_all do
-          prefix_options, query_options = split_options(options[:params])
-          path = collection_path(prefix_options, query_options)
-          instantiate_collection((format.decode(connection.get(path, headers).body)['data'] || []), query_options,
-                                 prefix_options)
-        rescue ActiveResource::ResourceNotFound
-          # Swallowing ResourceNotFound exceptions and return nil - as per
-          # ActiveRecord.
-          set_prefix_to_add
-          nil
+          super
         end
       end
     end
@@ -77,3 +71,8 @@ module ShiprocketAPI
     end
   end
 end
+
+# reload!
+# ShiprocketAPI::Base.create_session
+# orders = ShiprocketAPI::ReturnOrder.all
+# orders.fetch_next_page

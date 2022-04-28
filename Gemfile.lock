@@ -1,29 +1,28 @@
 PATH
   remote: .
   specs:
-    shiprocket_api (0.5.2)
+    shiprocket_api (0.5.3)
       activeresource (>= 4.1.0)
       http
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.5)
-      activesupport (= 6.1.5)
+    activemodel (7.0.2.4)
+      activesupport (= 7.0.2.4)
     activemodel-serializers-xml (1.0.2)
       activemodel (> 5.x)
       activesupport (> 5.x)
       builder (~> 3.1)
-    activeresource (5.1.1)
-      activemodel (>= 5.0, < 7)
+    activeresource (6.0.0)
+      activemodel (>= 6.0)
       activemodel-serializers-xml (~> 1.0)
-      activesupport (>= 5.0, < 7)
-    activesupport (6.1.5)
+      activesupport (>= 6.0)
+    activesupport (7.0.2.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     builder (3.2.4)
@@ -81,7 +80,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     rake (12.3.3)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
@@ -119,6 +118,7 @@ DEPENDENCIES
   rake (~> 12.0)
   rspec (~> 3.0)
   shiprocket_api!
+  zeitwerk
 
 BUNDLED WITH
    2.3.8

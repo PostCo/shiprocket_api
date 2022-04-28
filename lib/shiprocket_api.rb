@@ -6,6 +6,7 @@ module ShiprocketAPI
   require 'shiprocket_api/configuration'
   require 'shiprocket_api/connection'
   require 'shiprocket_api/errors'
+  require 'shiprocket_api/return_order_collection'
 
   require 'shiprocket_api/shared/order_helper'
 
