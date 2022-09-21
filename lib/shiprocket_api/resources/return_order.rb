@@ -7,7 +7,7 @@ module ShiprocketAPI
 
     has_many :order_items, class_name: 'ShiprocketAPI::OrderItem'
 
-    self.collection_parser = ReturnOrderCollection
+    self.collection_parser = ::ShiprocketAPI::ReturnOrderCollection
 
     DEFAULT_ATTRS = {
       order_id: '',
@@ -71,8 +71,3 @@ module ShiprocketAPI
     end
   end
 end
-
-# reload!
-# ShiprocketAPI::Base.create_session
-# orders = ShiprocketAPI::ReturnOrder.all
-# orders.fetch_next_page
