@@ -1,6 +1,6 @@
 module ShiprocketAPI
   class Base < ActiveResource::Base
-    cattr_accessor :session
+    # cattr_accessor :session
 
     self.connection_class = ShiprocketAPI::Connection
     self.include_root_in_json = false
@@ -8,11 +8,17 @@ module ShiprocketAPI
     self.site = 'https://apiv2.shiprocket.in'
     connection.auth_type = :bearer
     self.prefix = '/v1/external'
-    self.session = nil
 
     class << self
+      include ThreadsafeAttributes
+      threadsafe_attribute :session, :cache
+
       def create_session(email: ShiprocketAPI.config.email, password: ShiprocketAPI.config.password)
-        self.session = Session.create(email: email, password: password)
+        cache_key = Digest::SHA2.new(256).hexdigest("#{email}-#{password}")
+
+        self.session = cache.fetch(cache_key, expires_in: 9.days) do
+          Session.create(email: email, password: password)
+        end
         connection.bearer_token = session.token
       end
 
@@ -21,12 +27,13 @@ module ShiprocketAPI
         connection.bearer_token = nil
       end
 
-      def with_temp_session(email:, password:, &block)
+      def temp_session(email:, password:, &block)
         raise ArgumentError, 'A block must be given' unless block
 
         create_session(email: email, password: password)
         yield
-        clear_session
+      ensure
+        create_session
       end
 
       def set_prefix(prefix)

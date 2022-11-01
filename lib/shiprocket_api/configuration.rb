@@ -1,6 +1,6 @@
 module ShiprocketAPI
   class Configuration
-    attr_accessor :email, :password
+    attr_accessor :email, :password, :cache
   end
 
   def self.config
@@ -13,5 +13,6 @@ module ShiprocketAPI
 
   def self.configure
     yield config
+    Base.cache = config.cache || ActiveSupport::Cache::NullStore.new
   end
 end
